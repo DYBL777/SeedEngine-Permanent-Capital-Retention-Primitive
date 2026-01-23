@@ -1,6 +1,6 @@
 # 🌱 SeedEngine
 
-**A payment primitive where capital locks, yield compounds, and the floor can only rise.**
+**A payment primitive where capital locks, yield compounds, and the floor rises.**
 
 > What if the floor only went up?  
 > What if your protocol couldn't be drained?  
@@ -15,7 +15,7 @@ The Eternal Seed is a mechanism for **permanent capital retention**:
 - A percentage of capital flows locked during active operation
 - Locked capital earns yield, which compounds
 - No withdrawal during operation. Dormancy timelock protects users if the system becomes inactive
-- The floor can only rise
+- Under normal conditions, the floor only rises
 
 This isn't a product. It's **infrastructure**.
 
@@ -27,11 +27,11 @@ The Eternal Seed is a financial primitive that applies to:
 
 | Use Case | How Seed Helps |
 |----------|----------------|
-| Lotteries | Rising floor that never drops |
-| Savings products | Can't collapse. Principal protected |
+| Lotteries | Rising floor under normal operation |
+| Savings products | Principal protected by design |
 | Insurance | Self-funding coverage, no external premiums |
-| Stablecoins | Backing exceeds circulation over time |
-| Pensions | Guaranteed minimums that compound |
+| Stablecoins | Backing can exceed circulation over time |
+| Pensions | Minimums that compound |
 | DAOs | Treasury that grows, not drains |
 
 Any system with recurring capital flows can use a seed.
@@ -42,7 +42,7 @@ Any system with recurring capital flows can use a seed.
 
 | # | Variant | Description |
 |---|---------|-------------|
-| 1 | **Fixed Seed** | Permanent lock, never releases |
+| 1 | **Fixed Seed** | Permanent lock during active operation |
 | 2 | **Flexible Seed** | Partial release under stress conditions |
 | 3 | **Rolling Seed** | Lock % adjusts based on oracle data |
 | 4 | **Counter-Cyclical Seed** | Absorbs more during stress, stabilises recovery |
@@ -81,12 +81,12 @@ All variants fully specified in [`SeedEngine.sol`](./src/SeedEngine.sol) NatSpec
 │                      │                       │      │
 │                      └───────────────────────┘      │
 │                                                     │
-│              Floor rises. Never falls.              │
+│        Under normal operation, floor rises.         │
 │                                                     │
 └─────────────────────────────────────────────────────┘
 ```
 
-During active operation, seed only grows. The only exits are:
+During active operation, seed grows. The only exits are:
 
 1. **Dormancy** : System inactive 90+ days, users can withdraw pro-rata
 2. **Variant-specific triggers** : Insurance claims, emergency release, etc.
@@ -116,18 +116,6 @@ Production use before the Change Date requires a commercial license from DYBL Fo
 | 🐦 Twitter | [@DYBL77](https://twitter.com/DYBL77) |
 | 💬 Discord | dybl777 |
 | 🔗 GitHub | [DYBL777](https://github.com/DYBL777) |
-
----
-
-## For Builders
-
-Want to build on the Eternal Seed? Options:
-
-1. **License a variant** : Commercial license for production use
-2. **Partner** : Co-develop a new variant for your use case
-3. **Wait** : MIT license in 2029
-
-The primitive is open for inspection. The implementations are protected until the ecosystem matures.
 
 ---
 
